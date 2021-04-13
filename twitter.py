@@ -40,18 +40,21 @@ def get_matching_tweets_by_date():
         twint.run.Search(c)
 
 def clean_csvs(path):
+    if not os.path.exists("cleaned_tweets"):
+        os.makedirs("cleaned_tweets")
+
     ls = os.listdir(path)
     for f in ls:
         with open(f'{path}/{f}') as csvfile:
-            # reader = csv.reader(csvfile)
+
+            writefile = open(f"cleaned_tweets/{f}_cleaned.txt", "w")
+
             for row in csvfile:
                 split = row.split()
                 tweet = " ".join(split[5:])
                 tidy_tweet = tweet.strip().encode('ascii', 'ignore')
-                print(tidy_tweet)
-
-        break
-
+                writefile.write(str(tidy_tweet) + "\n")
+        writefile.close()
 
 if __name__ == "__main__":
     clean_csvs("scraped_tweets")
