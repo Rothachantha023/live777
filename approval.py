@@ -50,7 +50,7 @@ def calculate_approval():
         approve = map(lambda x: float(x), approve_str)
         disapprove = map(lambda x: float(x), disapprove_str)
         avgs.append({t_time: (round(mean(approve), 2), round(mean(disapprove), 2))})
-    pdb.set_trace()
+    return avgs
         
 
 
