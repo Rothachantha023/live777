@@ -34,25 +34,40 @@ def calculate_approval():
     polls = poll_times()
 
     avgs = []
+    if not os.path.exists("approval"):
+        os.makedirs("approval")
+    with open(f'approval/trump.csv', 'w', newline='') as csvfile:
+        fieldnames = ['date', 'pos', 'neg']
+        writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
+        writer.writeheader()
 
-    for t_time in tweet_times:
-        spanning_polls = []
+        for t_time in tweet_times:
+            spanning_polls = []
 
-        for p_time in polls:
-            start = list(p_time.keys())[0][0]
-            end = list(p_time.keys())[0][1]
-            if start <= t_time <= end:
-                spanning_polls.append(p_time)
+            for p_time in polls:
+                start = list(p_time.keys())[0][0]
+                end = list(p_time.keys())[0][1]
+                if start <= t_time <= end:
+                    spanning_polls.append(p_time)
 
-        approve_str = map(lambda x: list(x.values())[0][0], spanning_polls)
-        disapprove_str = map(lambda x: list(x.values())[0][1], spanning_polls)
+            approve_str = map(lambda x: list(x.values())[0][0], spanning_polls)
+            disapprove_str = map(lambda x: list(x.values())[0][1], spanning_polls)
 
-        approve = map(lambda x: float(x), approve_str)
-        disapprove = map(lambda x: float(x), disapprove_str)
-        avgs.append({t_time: (round(mean(approve), 2), round(mean(disapprove), 2))})
+            approve = map(lambda x: float(x), approve_str)
+            disapprove = map(lambda x: float(x), disapprove_str)
+
+            approve = round(mean(approve), 2)
+            disapprove = round(mean(disapprove), 2)
+            
+            avgs.append({t_time: (approve, disapprove)})
+            writer.writerow({'date': t_time, 'pos': approve,'neg': disapprove})
+            # pdb.set_trace()
+
+
     return avgs
         
 
 
 if __name__ == "__main__":
-    calculate_approval()
+    app = calculate_approval()
+    # pdb.set_trace()
