@@ -89,17 +89,17 @@ def sentiment(path):
         # pdb.set_trace()
 
 
-    with open(f'sentiments/sia.csv', 'w', newline='') as csvfile:
+    with open(f'sentiments/sia_cleaned.csv', 'w', newline='') as csvfile:
         fieldnames = ['date', 'pos', 'neu', 'neg']
         writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
         writer.writeheader()
         writer.writerows(sia_normalized)
-    with open(f'sentiments/tb.csv', 'w', newline='') as csvfile:
+    with open(f'sentiments/tb_cleaned.csv', 'w', newline='') as csvfile:
         fieldnames = ['date', 'pos', 'neu', 'neg']
         writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
         writer.writeheader()
         writer.writerows(tb_normalized)
-    with open(f'sentiments/fl.csv', 'w', newline='') as csvfile:
+    with open(f'sentiments/fl_cleaned.csv', 'w', newline='') as csvfile:
         fieldnames = ['date', 'pos', 'neu', 'neg']
         writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
         writer.writeheader()
@@ -107,4 +107,4 @@ def sentiment(path):
 
 
 if __name__ == "__main__":
-    sentiment("nlp_tweets")
+    sentiment("cleaned_tweets")
