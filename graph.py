@@ -45,7 +45,7 @@ def graph_sentiment():
 
 
     sentiment_data = []
-    with open('sentiments/fl.csv', newline='') as csvfile:
+    with open('sentiments/fl_cleaned.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',', quotechar='"')
         for row in reader:
             sentiment_data.append(row)
@@ -84,28 +84,29 @@ def graph_sentiment():
 
     # FIND CORRELATION
     # TODO - find correlation for differences!
-    pdb.set_trace()
+    # pdb.set_trace()
+    print(np.corrcoef(sentiment_diff, approval_diff))
     print(np.corrcoef(y_, y_2))
 
-    # GRAPHING
-    fig = plt.figure()
+    # # GRAPHING
+    # fig = plt.figure()
 
-    ax = fig.add_subplot(1, 1, 1)
-    # ax.plot_date(x_2, y_2, 'b-', color="red")
-    ax.plot_date(x_, y_, 'b-', color="blue")
-    ax.set_ylim([-1, 1])
+    # ax = fig.add_subplot(1, 1, 1)
+    # # ax.plot_date(x_2, y_2, 'b-', color="red")
+    # ax.plot_date(x_, y_, 'b-', color="blue")
+    # ax.set_ylim([-1, 1])
 
-    ax = fig.add_subplot(1, 1, 1)
-    # ax.plot_date(x_, y_, 'b-', color="green")
-    ax.plot_date(x_2, y_2, 'b-', color="yellow")
-    ax.set_ylim([-1, 1])
+    # ax = fig.add_subplot(1, 1, 1)
+    # # ax.plot_date(x_, y_, 'b-', color="green")
+    # ax.plot_date(x_2, y_2, 'b-', color="yellow")
+    # ax.set_ylim([-1, 1])
 
-    # ax2 = fig.add_subplot(1, 1, 1)
-    # ax2.plot_date(dates, negs, 'b-', color="red")
-    # ax.set_ylim([0, 1])
+    # # ax2 = fig.add_subplot(1, 1, 1)
+    # # ax2.plot_date(dates, negs, 'b-', color="red")
+    # # ax.set_ylim([0, 1])
 
-    plt.axhline(y=0, color='grey', linestyle='-')
-    plt.show()
+    # plt.axhline(y=0, color='grey', linestyle='-')
+    # plt.show()
 
 
 if __name__ == "__main__":

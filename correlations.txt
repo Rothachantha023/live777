@@ -1,0 +1,19 @@
+Correlations for the sentiment difference vs approval difference (positive - negative)
+
+sia 0.04775279
+sia smoothed 0.11848797
+
+sia_cleaned -0.04116051
+sia_cleaned smoothed -0.1064385
+
+tb 0.03088764
+tb_smoothed 0.13494615
+
+tb_cleaned -0.07573989
+tb_cleaned smoothed -0.07401314
+
+fl 0.06580662
+fl smoothed 0.26252651
+
+fl_cleaned -0.03899214
+fl_cleaned smoothed 0.07717095
