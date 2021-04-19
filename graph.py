@@ -45,7 +45,7 @@ def graph_sentiment():
 
 
     sentiment_data = []
-    with open('sentiments/fl_cleaned.csv', newline='') as csvfile:
+    with open('sentiments/sia.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',', quotechar='"')
         for row in reader:
             sentiment_data.append(row)
